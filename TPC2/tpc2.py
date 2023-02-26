@@ -4,7 +4,7 @@ def findsword(string, word):
         return False
     else:
         return True
-    
+
 def findsnumbers(inpt):
     numbers=[]
     r = 0
@@ -35,7 +35,7 @@ def main():
             flag=False
         if(flag and findsword(inpt,"=")):
             print(f"O Resultado da soma é: {sum}")
-        elif flag:
+        if flag:
             r = findsnumbers(inpt)
             sum+=r
 
