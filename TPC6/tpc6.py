@@ -26,6 +26,13 @@ tokens= (
     'RECPARCLOSE'
 )
 
+def t_ignore_SINGLECOMMENT(t):
+    r'\/\/.*?\n'
+    pass
+
+def t_ignore_COMMENTS(t):
+    r'\/\*(.|\n)*?\*\/'
+    pass
 
 
 def t_INT(t):
@@ -124,6 +131,9 @@ def t_NOME_VARIAVEL(t):
 
 t_ignore=' \t\n'
 
+
+
+
 def t_error(t):
     print(f"QUESTA MERDA PA {t.value}")
     t.lexer.skip(1)
@@ -131,13 +141,36 @@ def t_error(t):
 lexer=lex.lex()
 
 data = """
+/* factorial.p
+-- 2023-03-20 
+-- by jcr
+*/
+
+int i;
+
+// Função que calcula o factorial dum número n
+function fact(n){
+  int res = 1;
+  while res > 1 {
+    res = res * n;
+    res = res - 1;
+  }
+}
+
+// Programa principal
 program myFact{
   for i in [1..10]{
     print(i, fact(i));
   }
 }
+/* max.p: calcula o maior inteiro duma lista desordenada
+-- 2023-03-20 
+-- by jcr
+*/
+
 int i = 10, a[10] = {1,2,3,4,5,6,7,8,9,10};
 
+// Programa principal
 program myMax{
   int max = a[0];
   for i in [1..9]{
